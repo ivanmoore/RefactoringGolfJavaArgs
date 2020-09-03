@@ -55,7 +55,7 @@ public class Args {
     }
 
     private void parseArgumentStrings(List<String> argsList) throws ArgsException {
-        for (currentArgument = argsList.listIterator(); currentArgument.hasNext();) {
+        for (currentArgument = argsList.listIterator(); currentArgument.hasNext(); ) {
             String argString = currentArgument.next();
             if (argString.startsWith("-")) {
                 parseArgumentCharacters(argString.substring(1));

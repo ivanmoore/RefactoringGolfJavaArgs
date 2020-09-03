@@ -9,6 +9,12 @@ import static hole1.ArgsException.ErrorCode.MISSING_DOUBLE;
 public class DoubleArgumentMarshaler implements ArgumentMarshaler {
     private double doubleValue = 0;
 
+    public static double getValue(ArgumentMarshaler am) {
+        if (am != null && am instanceof DoubleArgumentMarshaler)
+            return ((DoubleArgumentMarshaler) am).doubleValue;
+        return 0.0;
+    }
+
     public void set(Iterator<String> currentArgument) throws ArgsException {
         String parameter = null;
         try {
@@ -19,11 +25,5 @@ public class DoubleArgumentMarshaler implements ArgumentMarshaler {
         } catch (NumberFormatException e) {
             throw new ArgsException(INVALID_DOUBLE, parameter);
         }
-    }
-
-    public static double getValue(ArgumentMarshaler am) {
-        if (am != null && am instanceof DoubleArgumentMarshaler)
-            return ((DoubleArgumentMarshaler) am).doubleValue;
-        return 0.0;
     }
 }

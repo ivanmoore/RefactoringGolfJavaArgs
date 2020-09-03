@@ -9,6 +9,12 @@ import static hole1.ArgsException.ErrorCode.MISSING_INTEGER;
 public class IntegerArgumentMarshaler implements ArgumentMarshaler {
     private int intValue = 0;
 
+    public static int getValue(ArgumentMarshaler am) {
+        if (am != null && am instanceof IntegerArgumentMarshaler)
+            return ((IntegerArgumentMarshaler) am).intValue;
+        return 0;
+    }
+
     public void set(Iterator<String> currentArgument) throws ArgsException {
         String parameter = null;
         try {
@@ -19,11 +25,5 @@ public class IntegerArgumentMarshaler implements ArgumentMarshaler {
         } catch (NumberFormatException e) {
             throw new ArgsException(INVALID_INTEGER, parameter);
         }
-    }
-
-    public static int getValue(ArgumentMarshaler am) {
-        if (am != null && am instanceof IntegerArgumentMarshaler)
-            return ((IntegerArgumentMarshaler) am).intValue;
-        return 0;
     }
 }
