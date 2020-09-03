@@ -37,21 +37,23 @@ public class Args {
         char elementId = element.charAt(0);
         String elementTail = element.substring(1);
         validateSchemaElementId(elementId);
-        ArgumentMarshaler argumentMarshaler;
+        marshalers.put(elementId, argumentMarshalerFor(elementId, elementTail));
+    }
+
+    private ArgumentMarshaler argumentMarshalerFor(char elementId, String elementTail) throws ArgsException {
         if (elementTail.length() == 0) {
-            argumentMarshaler = new BooleanArgumentMarshaler();
+            return new BooleanArgumentMarshaler();
         } else if (elementTail.equals("*")) {
-            argumentMarshaler = new StringArgumentMarshaler();
+            return new StringArgumentMarshaler();
         } else if (elementTail.equals("#")) {
-            argumentMarshaler = new IntegerArgumentMarshaler();
+            return new IntegerArgumentMarshaler();
         } else if (elementTail.equals("##")) {
-            argumentMarshaler = new DoubleArgumentMarshaler();
+            return new DoubleArgumentMarshaler();
         } else if (elementTail.equals("[*]")) {
-            argumentMarshaler = new StringArrayArgumentMarshaler();
+            return new StringArrayArgumentMarshaler();
         } else {
             throw new ArgsException(INVALID_ARGUMENT_FORMAT, elementId, elementTail);
         }
-        marshalers.put(elementId, argumentMarshaler);
     }
 
     private void validateSchemaElementId(char elementId) throws ArgsException {
