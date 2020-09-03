@@ -9,8 +9,9 @@ public class StringArgumentMarshaler implements ArgumentMarshaler {
     private String stringValue = "";
 
     public static String getValue(ArgumentMarshaler am) {
-        if (am != null && am instanceof StringArgumentMarshaler)
+        if (am != null && am instanceof StringArgumentMarshaler) {
             return ((StringArgumentMarshaler) am).stringValue;
+        }
         return "";
     }
 

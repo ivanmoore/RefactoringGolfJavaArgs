@@ -10,8 +10,9 @@ public class IntegerArgumentMarshaler implements ArgumentMarshaler {
     private int intValue = 0;
 
     public static int getValue(ArgumentMarshaler am) {
-        if (am != null && am instanceof IntegerArgumentMarshaler)
+        if (am != null && am instanceof IntegerArgumentMarshaler) {
             return ((IntegerArgumentMarshaler) am).intValue;
+        }
         return 0;
     }
 

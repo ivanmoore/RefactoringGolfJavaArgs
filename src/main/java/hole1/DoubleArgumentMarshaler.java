@@ -10,8 +10,9 @@ public class DoubleArgumentMarshaler implements ArgumentMarshaler {
     private double doubleValue = 0;
 
     public static double getValue(ArgumentMarshaler am) {
-        if (am != null && am instanceof DoubleArgumentMarshaler)
+        if (am != null && am instanceof DoubleArgumentMarshaler) {
             return ((DoubleArgumentMarshaler) am).doubleValue;
+        }
         return 0.0;
     }
 

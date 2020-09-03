@@ -7,41 +7,37 @@ public class ArgsTest extends TestCase {
         new Args("", new String[0]);
     }
 
-    public void testWithNoSchemaButWithOneArgument() throws Exception {
+    public void testWithNoSchemaButWithOneArgument() {
         try {
             new Args("", new String[]{"-x"});
             fail();
         } catch (ArgsException e) {
-            assertEquals(ArgsException.ErrorCode.UNEXPECTED_ARGUMENT,
-                    e.getErrorCode());
+            assertEquals(ArgsException.ErrorCode.UNEXPECTED_ARGUMENT, e.getErrorCode());
             assertEquals('x', e.getErrorArgumentId());
         }
     }
 
-    public void testWithNoSchemaButWithMultipleArguments() throws Exception {
+    public void testWithNoSchemaButWithMultipleArguments() {
         try {
             new Args("", new String[]{"-x", "-y"});
             fail();
         } catch (ArgsException e) {
-            assertEquals(ArgsException.ErrorCode.UNEXPECTED_ARGUMENT,
-                    e.getErrorCode());
+            assertEquals(ArgsException.ErrorCode.UNEXPECTED_ARGUMENT, e.getErrorCode());
             assertEquals('x', e.getErrorArgumentId());
         }
-
     }
 
-    public void testNonLetterSchema() throws Exception {
+    public void testNonLetterSchema() {
         try {
             new Args("*", new String[]{});
             fail("Args constructor should have thrown exception");
         } catch (ArgsException e) {
-            assertEquals(ArgsException.ErrorCode.INVALID_ARGUMENT_NAME,
-                    e.getErrorCode());
+            assertEquals(ArgsException.ErrorCode.INVALID_ARGUMENT_NAME, e.getErrorCode());
             assertEquals('*', e.getErrorArgumentId());
         }
     }
 
-    public void testInvalidArgumentFormat() throws Exception {
+    public void testInvalidArgumentFormat() {
         try {
             new Args("f~", new String[]{});
             fail("Args constructor should have throws exception");
@@ -53,7 +49,7 @@ public class ArgsTest extends TestCase {
 
     public void testSimpleBooleanPresent() throws Exception {
         Args args = new Args("x", new String[]{"-x"});
-        assertEquals(true, args.getBoolean('x'));
+        assertTrue(args.getBoolean('x'));
     }
 
     public void testSimpleStringPresent() throws Exception {
@@ -62,7 +58,7 @@ public class ArgsTest extends TestCase {
         assertEquals("param", args.getString('x'));
     }
 
-    public void testMissingStringArgument() throws Exception {
+    public void testMissingStringArgument() {
         try {
             new Args("x*", new String[]{"-x"});
             fail();
@@ -84,7 +80,7 @@ public class ArgsTest extends TestCase {
         assertEquals(42, args.getInt('x'));
     }
 
-    public void testInvalidInteger() throws Exception {
+    public void testInvalidInteger() {
         try {
             new Args("x#", new String[]{"-x", "Forty two"});
             fail();
@@ -96,7 +92,7 @@ public class ArgsTest extends TestCase {
 
     }
 
-    public void testMissingInteger() throws Exception {
+    public void testMissingInteger() {
         try {
             new Args("x#", new String[]{"-x"});
             fail();
@@ -112,7 +108,7 @@ public class ArgsTest extends TestCase {
         assertEquals(42.3, args.getDouble('x'), .001);
     }
 
-    public void testInvalidDouble() throws Exception {
+    public void testInvalidDouble() {
         try {
             new Args("x##", new String[]{"-x", "Forty two"});
             fail();
@@ -123,7 +119,7 @@ public class ArgsTest extends TestCase {
         }
     }
 
-    public void testMissingDouble() throws Exception {
+    public void testMissingDouble() {
         try {
             new Args("x##", new String[]{"-x"});
             fail();

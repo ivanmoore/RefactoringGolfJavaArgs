@@ -6,7 +6,6 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 public class AcceptanceTest {
-
     @Test
     public void schemaWithAllPossibleArgumentTypes() throws ArgsException {
         String schema = "p,q*,r#,s##";

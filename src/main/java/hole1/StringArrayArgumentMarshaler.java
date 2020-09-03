@@ -8,11 +8,12 @@ import java.util.NoSuchElementException;
 import static hole1.ArgsException.ErrorCode.MISSING_STRING;
 
 public class StringArrayArgumentMarshaler implements ArgumentMarshaler {
-    private List<String> strings = new ArrayList<String>();
+    private List<String> strings = new ArrayList<>();
 
     public static String[] getValue(ArgumentMarshaler am) {
-        if (am != null && am instanceof StringArrayArgumentMarshaler)
+        if (am != null && am instanceof StringArrayArgumentMarshaler) {
             return ((StringArrayArgumentMarshaler) am).strings.toArray(new String[0]);
+        }
         return new String[0];
     }
 
