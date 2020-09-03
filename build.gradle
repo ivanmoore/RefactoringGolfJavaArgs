@@ -22,19 +22,12 @@ dependencies {
 }
 
 jacoco {
-    toolVersion = "0.7.6.201602180812"
-}
-jacocoTestReport {
-    reports {
-        xml.enabled false
-        csv.enabled false
-        html.destination "${buildDir}/jacocoHtml"
-    }
+    toolVersion = "0.8.5"
+    reportsDir = file("$buildDir/jacocoReportDir")
 }
 test {
-    jacoco {
-        append = false
-        destinationFile = file("$buildDir/jacoco/jacocoTest.exec")
-        classDumpFile = file("$buildDir/jacoco/classpathdumps")
-    }
+    finalizedBy jacocoTestReport
+}
+jacocoTestReport {
+    dependsOn test
 }
