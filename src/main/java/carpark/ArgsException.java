@@ -1,6 +1,6 @@
-package hole2;
+package carpark;
 
-import static hole2.ArgsException.ErrorCode.OK;
+import static carpark.ArgsException.ErrorCode.OK;
 
 public class ArgsException extends Exception {
     private char errorArgumentId = '\0';

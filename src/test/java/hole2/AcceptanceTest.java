@@ -1,5 +1,6 @@
 package hole2;
 
+import carpark.ArgsException;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;

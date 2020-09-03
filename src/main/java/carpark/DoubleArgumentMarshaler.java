@@ -1,10 +1,10 @@
-package hole1;
+package carpark;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-import static hole1.ArgsException.ErrorCode.INVALID_DOUBLE;
-import static hole1.ArgsException.ErrorCode.MISSING_DOUBLE;
+import static carpark.ArgsException.ErrorCode.INVALID_DOUBLE;
+import static carpark.ArgsException.ErrorCode.MISSING_DOUBLE;
 
 public class DoubleArgumentMarshaler implements ArgumentMarshaler {
     private double doubleValue = 0;

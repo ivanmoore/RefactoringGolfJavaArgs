@@ -1,5 +1,6 @@
 package hole2;
 
+import carpark.ArgsException;
 import junit.framework.TestCase;
 
 public class ArgsTest extends TestCase {
